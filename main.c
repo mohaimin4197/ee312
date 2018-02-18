@@ -273,7 +273,7 @@ void printPosition(word** wordlist, char word[]){
  * returns 1 if there is vertical symmetry, 0 otherwise
  */
 uint32_t isVerticallySymmetric(uint32_t dimensions[], char** rowPtr){
-    printf("The following black squares are vertically asymmetric\n");
+    printf("The following black squares are vertically asymmetric:\n");
     uint32_t rows = dimensions[0];
     uint32_t cols = dimensions[1];
     uint32_t leftCounter = 0;
@@ -303,7 +303,7 @@ uint32_t isVerticallySymmetric(uint32_t dimensions[], char** rowPtr){
  * returns 1 if there is vertical symmetry, 0 otherwise
  */
 uint32_t isHorizontallySymmetric(uint32_t dimensions[], char** rowPtr){
-    printf("The following black squares are horizontally asymmetric\n");
+    printf("The following black squares are horizontally asymmetric:\n");
     uint32_t rows = dimensions[0];
     uint32_t cols = dimensions[1];
     uint32_t upCounter = 0;
@@ -345,7 +345,7 @@ void main() {
    /* char filename[100];
     printf("Enter name of file: ");
     scanf("%s",filename);*/
-    FILE* fptr = fopen("crossword1.txt", "r");
+    FILE* fptr = fopen("symmetricCrossword.txt", "r");
 
     if (fptr == NULL){
          printf("cannot open file\n");
