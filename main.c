@@ -346,18 +346,87 @@ void isSymmetric(uint32_t dimensions[], char** rowPtr){
     }
 }
 
-
-void main() {
-    //Ask user for name of file
-   /* char filename[100];
+/*
+ * this function is for when user wants to find longest words, know position of words, or find out
+ * if cross word is symmetric
+ */
+void userInput(){
+    char filename[100];
     printf("Enter name of file: ");
-    scanf("%s",filename);*/
-    FILE* fptr = fopen("verticallySymmetricCrossword.txt", "r");
-
+    scanf("%s",filename);
+    FILE* fptr = fopen(filename, "r");
     if (fptr == NULL){
-         printf("cannot open file\n");
-         exit(0);
+        printf("cannot open file\n");
+        exit(0);
     }
+    uint32_t dimensions[2];
+
+    getDimensions(fptr, dimensions);
+
+    char** rowPtr = allocateCrossword(dimensions);
+    copyCrossword(fptr, dimensions, rowPtr);
+
+    word** wordlist = createWordList(dimensions);
+    getDownWords(dimensions, rowPtr, wordlist);
+    getAcrossWords(dimensions, rowPtr, wordlist);
+    uint32_t maxLength = getMaxLength(wordlist);
+
+    uint32_t flag = 0;
+
+    while(flag == 0) {
+        char input[2];
+        printf("Do you want to know the longest vertical word? Y/N: \n");
+        scanf("%s", input);
+        if (strcasecmp("Y", input) == 0) {
+            printLongestWords(maxLength, wordlist);
+            flag = 1;
+        } else if (strcasecmp("N", input) == 0) {
+            flag = 1;
+        } else {
+            printf("Wrong input. Try again\n");
+        }
+    }
+
+    uint32_t flag1 = 0;
+    while(flag1 == 0) {
+        char input[2];
+        printf("Do you want to know the position of a word? Y/N: \n");
+        scanf("%s", input);
+        if (strcasecmp("Y", input) == 0) {
+            char temp[100];
+            printf("Enter a word to search for: ");
+            scanf("%s", temp);
+            printPosition(wordlist, temp);
+        } else if (strcasecmp("N", input) == 0) {
+            flag1 = 1;
+        } else {
+            printf("Wrong input. Try again\n");
+        }
+    }
+
+    uint32_t flag2 = 0;
+    while(flag2 == 0) {
+        char input[2];
+        printf("Do you want to know if the crossword is symmetric? Y/N: \n");
+        scanf("%s", input);
+        if (strcasecmp("Y", input) == 0) {
+            isSymmetric(dimensions, rowPtr);
+            flag2 = 1;
+        } else if (strcasecmp("N", input) == 0) {
+            flag2 = 1;
+        } else {
+            printf("Wrong input. Try again\n");
+        }
+    }
+
+    freeWordlist(wordlist);
+    freeCrossword(rowPtr, dimensions);
+    fclose(fptr);
+}
+
+void process(char filename[], char temp[]){
+    FILE* fptr = fopen(filename, "r");
+
     uint32_t dimensions[2];
 
     getDimensions(fptr, dimensions);
@@ -371,14 +440,34 @@ void main() {
     uint32_t maxLength = getMaxLength(wordlist);
     printLongestWords(maxLength, wordlist);
 
-    char temp[100];
-    printf("Enter a word to search for: ");
-    scanf("%s", temp);
     printPosition(wordlist, temp);
     isSymmetric(dimensions, rowPtr);
     freeWordlist(wordlist);
     freeCrossword(rowPtr, dimensions);
     fclose(fptr);
+
+}
+
+void generalTestCase(){
+    process("crossword1.txt", "asocial");
+}
+
+void symmetricTestCase(){
+    process("symmetricCrossword.txt", "shadow");
+}
+
+void verticallySymmetricTestCase(){
+    process("verticallySymmetricCrossword.txt", "revival");
+}
+
+void main() {
+
+    userInput();
+
+    //run Test Cases one at a time only
+    //generalTestCase();
+    //symmetricTestCase();
+    //verticallySymmetricTestCase();
 
 }
 
