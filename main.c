@@ -84,7 +84,6 @@ void getAcrossWords(uint32_t dimensions[], char** rowPtr, word** wordlist) {
                     if (k > 1) {
                         buildWord(i, (j-k), k, "across", tempword, wordlist);
                         numWords++;
-
                     }
                     k = 0;
 
@@ -102,9 +101,7 @@ void getAcrossWords(uint32_t dimensions[], char** rowPtr, word** wordlist) {
                     tempword[k] = rowPtr[i][j];
                     k++;
             }
-
         }
-
     }
 }
 
@@ -125,7 +122,6 @@ void getDownWords(uint32_t dimensions[], char** rowPtr, word** wordlist) {
                     buildWord((i-k), j, k, "down", tempword, wordlist);
                     numWords++;
                     numDownWords++;
-
                 }
                 k = 0;
 
@@ -144,9 +140,7 @@ void getDownWords(uint32_t dimensions[], char** rowPtr, word** wordlist) {
                 tempword[k] = rowPtr[i][j];
                 k++;
             }
-
         }
-
     }
 }
 
