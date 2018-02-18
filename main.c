@@ -94,9 +94,6 @@ void getAcrossWords(uint32_t dimensions[], char** rowPtr, word** wordlist) {
                 tempword[k] = 0;
                 if (k > 1) {
                     buildWord(i, (j-k+1), k, "across", tempword, wordlist);
-                    //printf("%s, %d %d, %d\n", wordlist[numWords]->word, wordlist[numWords]->row, wordlist[numWords]->col, wordlist[numWords]->length );
-                    //printf("%d\n",numWords);
-                    //printf("%s\n", wordlist[numWords]->word);
                     numWords++;
                 }
                 k=0;
