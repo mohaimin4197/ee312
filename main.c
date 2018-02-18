@@ -270,7 +270,7 @@ void printPosition(word** wordlist, char word[]){
 
 /*
  * prints position (row and column) of each black square which is vertically asymmetric
- * prints "all black squares are vertically symmetric" if there is vertical symmetry
+ * returns 1 if there is vertical symmetry, 0 otherwise
  */
 uint32_t isVerticallySymmetric(uint32_t dimensions[], char** rowPtr){
     printf("The following black squares are vertically asymmetric\n");
@@ -298,6 +298,10 @@ uint32_t isVerticallySymmetric(uint32_t dimensions[], char** rowPtr){
     }
 }
 
+/*
+ * prints position (row and column) of each black square which is horizontally asymmetric
+ * returns 1 if there is vertical symmetry, 0 otherwise
+ */
 uint32_t isHorizontallySymmetric(uint32_t dimensions[], char** rowPtr){
     printf("The following black squares are horizontally asymmetric\n");
     uint32_t rows = dimensions[0];
