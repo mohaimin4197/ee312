@@ -35,7 +35,7 @@ void buildWord(uint32_t row, uint32_t col, uint32_t length, char* orientation, c
     wordlist[numWords]->orientation = (char*) malloc(7*sizeof(char));
     strcpy(wordlist[numWords]->orientation, orientation);
 }
-
+//checking
 void getAcrossWords(uint32_t dimensions[], char** rowPtr, word** wordlist) {
     uint32_t rows = dimensions[0];
     uint32_t cols = dimensions[1];
