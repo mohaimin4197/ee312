@@ -8,12 +8,10 @@
 #include <stdio.h>
 #include <stdint.h>
 #include <stdlib.h>
-#include <math.h>
-#include <stdbool.h>
 #include <string.h>
 
-uint32_t numWords = 0;
-uint32_t numDownWords = 0;
+uint32_t numWords = 0; //counter for total number of words in crossword
+uint32_t numDownWords = 0; //counter for total number of vertical words in crossword
 
 /* This struct defines characteristics of words that are present in the crossword.
  * row and col give position of first letter of word
@@ -85,8 +83,6 @@ void getAcrossWords(uint32_t dimensions[], char** rowPtr, word** wordlist) {
                     tempword[k] = 0;
                     if (k > 1) {
                         buildWord(i, (j-k), k, "across", tempword, wordlist);
-                        //printf("%s, %d %d, %d\n", wordlist[numWords]->word, wordlist[numWords]->row, wordlist[numWords]->col, wordlist[numWords]->length );
-                        //printf("%d\n",numWords);
                         numWords++;
 
                     }
@@ -130,8 +126,6 @@ void getDownWords(uint32_t dimensions[], char** rowPtr, word** wordlist) {
                 tempword[k] = 0;
                 if (k > 1) {
                     buildWord((i-k), j, k, "down", tempword, wordlist);
-                    //printf("%s, %d %d, %d\n", wordlist[numWords]->word, wordlist[numWords]->row, wordlist[numWords]->col, wordlist[numWords]->length );
-                    //printf("%d\n",numWords);
                     numWords++;
                     numDownWords++;
 
@@ -144,9 +138,6 @@ void getDownWords(uint32_t dimensions[], char** rowPtr, word** wordlist) {
                 tempword[k] = 0;
                 if (k > 1) {
                     buildWord((i-k+1), j, k, "down", tempword, wordlist);
-                    //printf("%s, %d %d, %d\n", wordlist[numWords]->word, wordlist[numWords]->row, wordlist[numWords]->col, wordlist[numWords]->length );
-                    //printf("%d\n",numWords);
-                    //printf("%s\n", wordlist[numWords]->word);
                     numWords++;
                     numDownWords++;
                 }
@@ -464,7 +455,10 @@ void main() {
 
     userInput();
 
-    //run Test Cases one at a time only
+    /*
+     * run Test Cases one at a time only, because of use of global variables in program
+     * Do not run userInput function with test cases simultaneously for same reason.
+     */
     //generalTestCase();
     //symmetricTestCase();
     //verticallySymmetricTestCase();
