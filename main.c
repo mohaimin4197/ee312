@@ -1,3 +1,10 @@
+// Crosswords
+// EE 312 Extra Assignment 1 submission by
+// Muhammed Mohaimin Sadiq
+// ms73882
+// Spring 2018
+
+
 #include <stdio.h>
 #include <stdint.h>
 #include <stdlib.h>
@@ -345,7 +352,7 @@ void main() {
    /* char filename[100];
     printf("Enter name of file: ");
     scanf("%s",filename);*/
-    FILE* fptr = fopen("symmetricCrossword.txt", "r");
+    FILE* fptr = fopen("verticallySymmetricCrossword.txt", "r");
 
     if (fptr == NULL){
          printf("cannot open file\n");
