@@ -416,6 +416,9 @@ void userInput(){
 }
 
 void process(char filename[], char temp[]){
+    numWords = 0;
+    numDownWords = 0;
+
     FILE* fptr = fopen(filename, "r");
 
     uint32_t dimensions[2];
@@ -455,12 +458,12 @@ void main() {
 
     userInput();
 
-    /*
-     * run Test Cases one at a time only, because of use of global variables in program
-     * Do not run userInput function with test cases simultaneously for same reason.
-     */
+   //Test Cases. Uncomment to run.
+
     //generalTestCase();
+
     //symmetricTestCase();
+
     //verticallySymmetricTestCase();
 
 }
