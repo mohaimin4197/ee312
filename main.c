@@ -445,6 +445,11 @@ void verticallySymmetricTestCase(){
     process("verticallySymmetricCrossword.txt", "revival");
 }
 
+void nonSquareTestCase(){
+    process("nonSquareCrossword.txt", "cushions");
+}
+
+
 void main() {
 
     userInput();
@@ -456,6 +461,8 @@ void main() {
     //symmetricTestCase();
 
     //verticallySymmetricTestCase();
+
+    //nonSquareTestCase();
 
 }
 
